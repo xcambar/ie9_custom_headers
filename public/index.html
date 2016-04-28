@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <pre id="results"></pre>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script>
+    $(function() {
+      $.ajax({
+        url: '/api',
+        method: 'post',
+        headers: {
+          'X-WHATEVER': 'Woot!',
+          'dont-ask': 'why',
+          'X-CSRFToken': 'ba2912ebas'
+        }
+      }).then(function(data) {
+        $('#results').text(JSON.stringify(data, null, 2));
+      });
+    });
+  </script>
+</body>
+</html>

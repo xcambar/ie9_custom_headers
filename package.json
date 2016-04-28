@@ -1,0 +1,14 @@
+{
+  "name": "ie9_custom_headers",
+  "version": "1.0.0",
+  "description": "Can we have custom headers in AJAX request sin IE9?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xavier Cambar <xcambar@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
