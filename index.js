@@ -1,12 +1,16 @@
 'use strict';
 
 var express = require('express');
+var cors = require('cors');
 var app = express();
 
+app.use(cors());
 app.use('/', express.static('public'));
 
-app.post('/api', function (req, res, next) {
-  res.send(req.headers);
+app.options('*', cors());
+
+app.post('/', function (req, res, next) {
+  res.json(req.headers);
   next();
 });
 

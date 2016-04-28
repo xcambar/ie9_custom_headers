@@ -5,20 +5,39 @@
   <title></title>
 </head>
 <body>
-  <pre id="results"></pre>
+  <h1>Same domain</h1>
+  <pre id="same_domain"></pre>
+  <h1>Cross domain</h1>
+  <pre id="cross_domain"></pre>
   <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
   <script>
     $(function() {
+      // SAME DOMAIN
       $.ajax({
-        url: '/api',
+        url: '//' + window.location.host + '/',
         method: 'post',
         headers: {
           'X-WHATEVER': 'Woot!',
-          'dont-ask': 'why',
           'X-CSRFToken': 'ba2912ebas'
         }
       }).then(function(data) {
-        $('#results').text(JSON.stringify(data, null, 2));
+        $('#same_domain').text(JSON.stringify(data, null, 2));
+      }, function(reason) {
+        $('#same_domain').text(reason.statusText);
+      });
+
+      //CROSS DOMAIN
+      $.ajax({
+        url: '//api.' + window.location.host + '/',
+        method: 'post',
+        headers: {
+          'X-WHATEVER': 'Woot!',
+          'X-CSRFToken': 'ba2912ebas'
+        }
+      }).then(function(data) {
+        $('#cross_domain').text(JSON.stringify(data, null, 2));
+      }, function(reason) {
+        $('#cross_domain').text(reason.statusText);
       });
     });
   </script>
